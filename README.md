@@ -50,16 +50,14 @@ Error handling and Data Validation is performed individually in every code and n
 
 File Name - `04_Visualization_of_Transformed_Data.py` - an Azure Databricks Notebook that creates a Visualization based on the *transformed* delta table created in Step 03
 
- * Query the `iris_transformed` Delta Table usign Spark SQL
- * Generate a chart of the data using Matplotlib
- * Save the chart as `avg_sepal_length_by_species.png` in the Azure workspace
- * Location: `/dbfs/tmp/avg_sepal_length_by_species.png`
- * The image cannot be pushed into the Github Repository directly from a Databricks notebook, because it requires git commands and authentication information
+ * Query the `forbes_2022_billionaires` Delta Table usign Spark SQL
+ * Generate a chart of the data using Matplotlib and plotly.
+ * Save the chart as `net_worth.png` in the Azure workspace
 ![Visualization](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/Visualization.png)
 
 ## 6 - An automated trigger to initiate the pipeline
 
-The pipeline has been set up to run automatically on the 1st day of every month at 00:00:00.
+The pipeline has been set up to run automatically each day at 04:10:00.
 
 #### Workflow Pipeline : The workflow first creates the table, then Transforms and Loads the Data, and then creates a Visualization for it using codes from steps 2, 3, and 5 from above 
 ![Workflow Chart](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/workflow_pipeline.png)
