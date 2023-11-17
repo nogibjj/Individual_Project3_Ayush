@@ -15,7 +15,9 @@ File Name - an Azure Databricks workspace that extracts data, performs transform
  * *Transform* - Creates a Spark DataFrame called `filtered_df` from the 'spark_df' dataframe, subsetting the rows with age > 60 and dropping the first column. 
  * *Load* - Saves the transformed spark Dataframe as a Delta table called `my_delta_table`
 
-![ETL Operations](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/blob/4655695b1e24279b466294c792cd751fac3e3811/Resources/1116_ETL_Operations%20-%20Databricks.png)
+![ETL Operations](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/ingestion.png)
+![ETL Operations](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/transform.png)
+![ETL Operations](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/Load.png)
 
 ## 2 - Usage of Delta Lake for data storage
 
@@ -26,7 +28,7 @@ File Name - `02_Delta_Lake_For_Storage.py` - an Azure Databricks Notebook that c
  * Convert the Pandas DataFrame to a Spark Dataframe `spark_df` (because only spark dataframes can be converted to a delta format)
  * Save the Spark DataFrame as a Delta-Table `delta_table_iris` (Overwrite mode is on so that if the table already exists, it will be re-written instead of giving errors)
  * Error handling at every step to highlight errors
-![Delta Lake for Storage](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/blob/ac0b5d7704c4c6a488b37883534836f9fd4630c2/Resources/1116_Delta_Lake_For_Storage%20-%20Databricks.png)
+![Delta Lake for Storage](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/DeltaLakeStorage.png)
 
 
 ## 3 - Usage of Spark SQL for data transformations
@@ -38,7 +40,7 @@ File Name - `03_Spark_SQL_For_DataTransformation.py` - an Azure Databricks Noteb
  * Using the *GROUP BY* command in SQL to transform the data and make it readable
  * Writing this data into a new delta table `iris_transformed` for future steps (visualization)
  * Error handling at every step
-![Usage of Spark SQL](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/blob/ac0b5d7704c4c6a488b37883534836f9fd4630c2/Resources/1116_Spark_SQL_for_DataTransformations%20-%20Databricks.png)
+![Usage of Spark SQL](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/Pyspark%20Transformation%20and%20Error%20handling.png)
 
 
 ## 4 - Proper error handling and data validation
@@ -53,17 +55,17 @@ File Name - `04_Visualization_of_Transformed_Data.py` - an Azure Databricks Note
  * Save the chart as `avg_sepal_length_by_species.png` in the Azure workspace
  * Location: `/dbfs/tmp/avg_sepal_length_by_species.png`
  * The image cannot be pushed into the Github Repository directly from a Databricks notebook, because it requires git commands and authentication information
-![Visualization](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/blob/ac0b5d7704c4c6a488b37883534836f9fd4630c2/Resources/1116_Visualization_of_Transformed_Data%20-%20Databricks.png)
+![Visualization](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/Visualization.png)
 
 ## 6 - An automated trigger to initiate the pipeline
 
 The pipeline has been set up to run automatically on the 1st day of every month at 00:00:00.
 
 #### Workflow Pipeline : The workflow first creates the table, then Transforms and Loads the Data, and then creates a Visualization for it using codes from steps 2, 3, and 5 from above 
-![Workflow Chart](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/blob/e1d428241365f7c7e46e128508187be075389625/Resources/1116_Automated%20Workflow_Chart%20-%20Databricks.png)
+![Workflow Chart](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/workflow_pipeline.png)
 
 #### Workflow Successful Run
-![Workflow Run](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/blob/e1d428241365f7c7e46e128508187be075389625/Resources/1116_Automated%20Workflow%20-%20Databricks.png)
+![Workflow Run](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/Workflow.png)
 
 ## 7 - Video Demo - [Link]()
 
