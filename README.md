@@ -9,6 +9,10 @@
 
 Azure Workspace [Link](https://adb-2312128046693227.7.azuredatabricks.net/browse/folders/2979888917193756?o=2312128046693227)
 
+What is a Data Pipeline? 
+In Databricks, a pipeline refers to a series of data processing steps or tasks orchestrated to execute in a specific sequence. It's a workflow that defines the movement and transformation of data from its raw form to a desired output, incorporating various operations like data ingestion, cleansing, transformation, analysis, and model training or deployment.
+
+
 File Name - an Azure Databricks workspace that extracts data, performs transformations, and loads the data into a final output using Pyspark. 
  * Creates a Spark Session `spark`
  * *Extract* - Extracts data from `forbes_2022_billionaires.csv` in the Data Folder, and stores it in a Dataframe `spark_df`
