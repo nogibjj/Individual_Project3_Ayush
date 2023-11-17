@@ -33,6 +33,24 @@ File Name - `02_Delta_Lake_For_Storage.py` - an Azure Databricks Notebook that c
 
 ## 3 - Usage of Spark SQL for data transformations
 
+#### Scale and Distribution:
+SparkSQL excels in processing massive datasets distributed across clusters, unlike MySQL, which operates on a single server.
+
+#### Complex Analytics and Processing:
+SparkSQL seamlessly handles complex analytics, machine learning pipelines, graph processing, and real-time data streaming, areas where MySQL lacks capabilities.
+
+#### Data Variety and Integration:
+SparkSQL effortlessly manages data from diverse sources (HDFS, Parquet, JSON, etc.), while MySQL primarily handles structured relational data.
+
+#### Scalability and Performance:
+SparkSQL scales horizontally by distributing tasks across nodes, unlike MySQL, which typically scales vertically (upgrading hardware).
+SparkSQL’s in-memory processing boosts performance for iterative algorithms and ad-hoc queries on large datasets.
+
+#### Real-Time Analytics and Queries:
+SparkSQL offers faster real-time analytics and interactive querying due to caching and optimized distributed processing, outperforming MySQL in many cases.
+
+In summary, SparkSQL is preferred over MySQL when dealing with massive distributed datasets, complex analytics, diverse data sources, scalability needs, and real-time analytics or queries.
+
 File Name - `03_Spark_SQL_For_DataTransformation.py` - an Azure Databricks Notebook that queries the 2022_billionaire Delta Table created above using *Spark SQL*
 
  * Create a Spark Session using PySpark.SQL
