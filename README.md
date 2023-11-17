@@ -62,6 +62,18 @@ File Name - `03_Spark_SQL_For_DataTransformation.py` - an Azure Databricks Noteb
 Error handling and Data Validation is performed individually in every code and notebook. Errors are published wherever possible, and empty dataframes are flagged as well.
 
 ### 4 - Usage of Delta Lake for data storage
+Delta Lake, a storage layer that sits atop a data lake, brings these key benefits:
+
+1. Reliability and Consistency: Ensures data integrity and reliability with ACID transactions, crucial for multiple concurrent data updates.
+
+2. Time Travel: Allows querying data at different points in time, aiding historical analysis and auditing.
+
+3. Schema Evolution: Flexibility to modify schemas without disrupting pipelines, accommodating changing business needs.
+
+4. Optimized Performance: Improves storage efficiency and query performance through smart data management techniques.
+
+5. Unified Processing: Seamlessly handles both batch and streaming data, enabling comprehensive analysis across different data types.
+
 
 File Name - `02_Delta_Lake_For_Storage.py` - an Azure Databricks Notebook that creates a Delta Table in the Delta Lake using *Spark*
 
