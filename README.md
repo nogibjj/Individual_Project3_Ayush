@@ -5,9 +5,9 @@
 ## Purpose :
 The purpose of this project is to perform ETL operations with a pipeline on Databricks using Spqrk SQL. 
 
-# Components:
+## Components:
 
-## 1 - Databricks notebooks for ETL
+### 1 - Databricks notebooks for ETL
 
 Azure Workspace [Link](https://adb-2312128046693227.7.azuredatabricks.net/browse/folders/2979888917193756?o=2312128046693227)
 
@@ -29,7 +29,7 @@ Transform :
 Load : 
 ![ETL Operations](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/Load.png)
 
-## 2 - Usage of Spark SQL for data transformations
+### 2 - Usage of Spark SQL for data transformations
 
 #### Scale and Distribution:
 SparkSQL excels in processing massive datasets distributed across clusters, unlike MySQL, which operates on a single server.
@@ -58,10 +58,10 @@ File Name - `03_Spark_SQL_For_DataTransformation.py` - an Azure Databricks Noteb
  * Error handling at every step
 ![Usage of Spark SQL](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/Pyspark%20Transformation%20and%20Error%20handling.png)
 
-## 3 - Proper error handling and data validation
+### 3 - Proper error handling and data validation
 Error handling and Data Validation is performed individually in every code and notebook. Errors are published wherever possible, and empty dataframes are flagged as well.
 
-## 4 - Usage of Delta Lake for data storage
+### 4 - Usage of Delta Lake for data storage
 
 File Name - `02_Delta_Lake_For_Storage.py` - an Azure Databricks Notebook that creates a Delta Table in the Delta Lake using *Spark*
 
@@ -72,7 +72,7 @@ File Name - `02_Delta_Lake_For_Storage.py` - an Azure Databricks Notebook that c
  * Error handling at every step to highlight errors
 ![Delta Lake for Storage](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/DeltaLakeStorage.png)
 
-## 5 - Visualization of the transformed data
+### 5 - Visualization of the transformed data
 
 File Name - `04_Visualization_of_Transformed_Data.py` - an Azure Databricks Notebook that creates a Visualization based on the *transformed* delta table created in Step 03
 
@@ -81,17 +81,17 @@ File Name - `04_Visualization_of_Transformed_Data.py` - an Azure Databricks Note
  * Save the chart as `net_worth.png` in the Azure workspace
 ![Visualization](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/Visualization.png)
 
-## 6 - An automated trigger to initiate the pipeline
+### 6 - An automated trigger to initiate the pipeline
 
 The pipeline has been set up to run automatically each day at 04:10:00.
 
-#### Workflow Pipeline : The workflow first creates the table, then Transforms and Loads the Data, and then creates a Visualization for it using codes from steps 2, 3, and 5 from above 
+### Workflow Pipeline : The workflow first creates the table, then Transforms and Loads the Data, and then creates a Visualization for it using codes from steps 2, 3, and 5 from above 
 ![Workflow Chart](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/workflow_pipeline.png)
 
 #### Workflow Successful Run
 ![Workflow Run](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/Workflow.png)
 
-## 7 - Video Demo - [Link]()
+### 7 - Video Demo - [Link]()
 
 
 
