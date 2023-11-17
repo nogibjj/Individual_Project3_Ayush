@@ -23,22 +23,22 @@ File Name - an Azure Databricks workspace that extracts data, performs transform
 
 File Name - `02_Delta_Lake_For_Storage.py` - an Azure Databricks Notebook that creates a Delta Table in the Delta Lake using *Spark*
 
- * Read the iris dataset from the Data Folder
+ * Read the 2022_billionaire dataset from the Data Folder
  * Create a pandas DataFrame `data`
  * Convert the Pandas DataFrame to a Spark Dataframe `spark_df` (because only spark dataframes can be converted to a delta format)
- * Save the Spark DataFrame as a Delta-Table `delta_table_iris` (Overwrite mode is on so that if the table already exists, it will be re-written instead of giving errors)
+ * Save the Spark DataFrame as a Delta-Table `delta_table` (Overwrite mode is on so that if the table already exists, it will be re-written instead of giving errors)
  * Error handling at every step to highlight errors
 ![Delta Lake for Storage](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/DeltaLakeStorage.png)
 
 
 ## 3 - Usage of Spark SQL for data transformations
 
-File Name - `03_Spark_SQL_For_DataTransformation.py` - an Azure Databricks Notebook that queries the Iris Delta Table created above using *Spark SQL*
+File Name - `03_Spark_SQL_For_DataTransformation.py` - an Azure Databricks Notebook that queries the 2022_billionaire Delta Table created above using *Spark SQL*
 
  * Create a Spark Session using PySpark.SQL
- * Query the `delta_table_iris` table created in the above step (#2)
+ * Query the `delta_table` table created in the above step (#2)
  * Using the *GROUP BY* command in SQL to transform the data and make it readable
- * Writing this data into a new delta table `iris_transformed` for future steps (visualization)
+ * Writing this data into a new delta table for future steps (visualization)
  * Error handling at every step
 ![Usage of Spark SQL](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/Pyspark%20Transformation%20and%20Error%20handling.png)
 
