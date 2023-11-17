@@ -5,7 +5,7 @@
 
 # Components:
 
-## 1 - A Databricks notebook that performs ETL (Extract, Transform, Load) operations, checked into the repository
+## 1 - A Databricks notebooks that performs ETL (Extract, Transform, Load) operations
 
 Azure Workspace [Link](https://adb-2312128046693227.7.azuredatabricks.net/browse/folders/2979888917193756?o=2312128046693227)
 
