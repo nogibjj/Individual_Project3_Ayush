@@ -1,17 +1,18 @@
+[![CI](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/actions/workflows/01_Install.yml/badge.svg)](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/actions/workflows/01_Install.yml)
+
 # Databricks ETL (Extract Transform Load) Pipeline
 
-
-[![CI](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/actions/workflows/01_Install.yml/badge.svg)](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/actions/workflows/01_Install.yml)
+## Purpose :
+The purpose of this project is to perform ETL operations with a pipeline on Databricks using Spqrk SQL. 
 
 # Components:
 
-## 1 - Databricks notebooks that performs ETL (Extract, Transform, Load) operations
+## 1 - Databricks notebooks for ETL
 
 Azure Workspace [Link](https://adb-2312128046693227.7.azuredatabricks.net/browse/folders/2979888917193756?o=2312128046693227)
 
 What is a Data Pipeline? 
-In Databricks, a pipeline refers to a series of data processing steps or tasks orchestrated to execute in a specific sequence. It's a workflow that defines the movement and transformation of data from its raw form to a desired output, incorporating various operations like data ingestion, cleansing, transformation, analysis, and model training or deployment.
-
+Data pipeline is a workflow that defines the movement and transformation of data from its raw form to a desired output, incorporating various operations like data ingestion, cleansing, transformation, analysis, and model training or deployment.
 
 File Name - an Azure Databricks workspace that extracts data, performs transformations, and loads the data into a final output using Pyspark. 
  * Creates a Spark Session `spark`
@@ -19,23 +20,16 @@ File Name - an Azure Databricks workspace that extracts data, performs transform
  * *Transform* - Creates a Spark DataFrame called `filtered_df` from the 'spark_df' dataframe, subsetting the rows with age > 60 and dropping the first column. 
  * *Load* - Saves the transformed spark Dataframe as a Delta table called `my_delta_table`
 
+Ingestion :
 ![ETL Operations](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/ingestion.png)
+
+Transform : 
 ![ETL Operations](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/transform.png)
+
+Load : 
 ![ETL Operations](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/Load.png)
 
-## 2 - Usage of Delta Lake for data storage
-
-File Name - `02_Delta_Lake_For_Storage.py` - an Azure Databricks Notebook that creates a Delta Table in the Delta Lake using *Spark*
-
- * Read the 2022_billionaire dataset from the Data Folder
- * Create a pandas DataFrame `data`
- * Convert the Pandas DataFrame to a Spark Dataframe `spark_df` (because only spark dataframes can be converted to a delta format)
- * Save the Spark DataFrame as a Delta-Table `delta_table` (Overwrite mode is on so that if the table already exists, it will be re-written instead of giving errors)
- * Error handling at every step to highlight errors
-![Delta Lake for Storage](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/DeltaLakeStorage.png)
-
-
-## 3 - Usage of Spark SQL for data transformations
+## 2 - Usage of Spark SQL for data transformations
 
 #### Scale and Distribution:
 SparkSQL excels in processing massive datasets distributed across clusters, unlike MySQL, which operates on a single server.
@@ -64,9 +58,19 @@ File Name - `03_Spark_SQL_For_DataTransformation.py` - an Azure Databricks Noteb
  * Error handling at every step
 ![Usage of Spark SQL](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/Pyspark%20Transformation%20and%20Error%20handling.png)
 
-
-## 4 - Proper error handling and data validation
+## 3 - Proper error handling and data validation
 Error handling and Data Validation is performed individually in every code and notebook. Errors are published wherever possible, and empty dataframes are flagged as well.
+
+## 4 - Usage of Delta Lake for data storage
+
+File Name - `02_Delta_Lake_For_Storage.py` - an Azure Databricks Notebook that creates a Delta Table in the Delta Lake using *Spark*
+
+ * Read the 2022_billionaire dataset from the Data Folder
+ * Create a pandas DataFrame `data`
+ * Convert the Pandas DataFrame to a Spark Dataframe `spark_df` (because only spark dataframes can be converted to a delta format)
+ * Save the Spark DataFrame as a Delta-Table `delta_table` (Overwrite mode is on so that if the table already exists, it will be re-written instead of giving errors)
+ * Error handling at every step to highlight errors
+![Delta Lake for Storage](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/DeltaLakeStorage.png)
 
 ## 5 - Visualization of the transformed data
 
