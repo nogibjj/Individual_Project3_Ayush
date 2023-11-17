@@ -1,4 +1,4 @@
-# Individual Project #3: Databricks ETL (Extract Transform Load) Pipeline
+# Databricks ETL (Extract Transform Load) Pipeline
 
 
 [![CI](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/actions/workflows/01_Install.yml/badge.svg)](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/actions/workflows/01_Install.yml)
