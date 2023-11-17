@@ -1,86 +1,115 @@
-# Data Pipeline in Databricks
+# Individual Project #3: Databricks ETL (Extract Transform Load) Pipeline
 
-[![CI](https://github.com/nogibjj/IDS-706_rg361_week-11/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/IDS-706_rg361_week-11/actions/workflows/cicd.yml)
 
-This repositroy contains files to process data in ``Databricks`` using ``PySpark``, ``Python``  and ``SQL``
+[![CI](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/actions/workflows/01_Install.yml/badge.svg)](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/actions/workflows/01_Install.yml)
 
-## Overview
+# Components:
 
-This project performs a sample End-to-End Data Pipeline in Databricks.
-The sample data is loaded from Databricks and the notebooks used for processing are saved in this Github Repository in the ``Notebooks`` folder.
+## 1 - A Databricks notebook that performs ETL (Extract, Transform, Load) operations, checked into the repository
 
-A Databricks ``workflow`` is setup to run the notbooks in sequence to simulate the End-to-End workflow.
+Azure Workspace [Link](https://adb-2312128046693227.7.azuredatabricks.net/browse/folders/2979888917193756?o=2312128046693227)
 
-``Github`` actions automatically performs the ``CICD`` workflows whenever there is a change in the repository.
+File Name - an Azure Databricks workspace that extracts data, performs transformations, and loads the data into a final output using Pyspark. 
+ * Creates a Spark Session `spark`
+ * *Extract* - Extracts data from `forbes_2022_billionaires.csv` in the Data Folder, and stores it in a Dataframe `spark_df`
+ * *Transform* - Creates a Spark DataFrame called `filtered_df` from the 'spark_df' dataframe, subsetting the rows with age > 60 and dropping the first column. 
+ * *Load* - Saves the transformed spark Dataframe as a Delta table called `my_delta_table`
 
-![Schema](https://github.com/nogibjj/Week_11_miniproj_Ayush/blob/main/Images/Databricks_str.png)
+![ETL Operations](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/blob/4655695b1e24279b466294c792cd751fac3e3811/Resources/1116_ETL_Operations%20-%20Databricks.png)
 
-## Instructions
+## 2 - Usage of Delta Lake for data storage
 
-The Primary data and operations happen in the Databricks platform.
+File Name - `02_Delta_Lake_For_Storage.py` - an Azure Databricks Notebook that creates a Delta Table in the Delta Lake using *Spark*
 
-We use the ``million songs`` sample dataset available in databricks for this process.
+ * Read the iris dataset from the Data Folder
+ * Create a pandas DataFrame `data`
+ * Convert the Pandas DataFrame to a Spark Dataframe `spark_df` (because only spark dataframes can be converted to a delta format)
+ * Save the Spark DataFrame as a Delta-Table `delta_table_iris` (Overwrite mode is on so that if the table already exists, it will be re-written instead of giving errors)
+ * Error handling at every step to highlight errors
+![Delta Lake for Storage](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/blob/ac0b5d7704c4c6a488b37883534836f9fd4630c2/Resources/1116_Delta_Lake_For_Storage%20-%20Databricks.png)
 
-4 Notebooks have been created to perform the following tasks or steps in the pipeline:
 
-1. ``EDA``: To get an overview of the data, this is only exploratory in nature and is **NOT** a part of the Final Workflow
+## 3 - Usage of Spark SQL for data transformations
 
-2. ``Ingestion``: This notebook loads the data from the sample dataset and saves it as ``songs`` table in Databricks
+File Name - `03_Spark_SQL_For_DataTransformation.py` - an Azure Databricks Notebook that queries the Iris Delta Table created above using *Spark SQL*
 
-3. ``Preparation``: This notebook contains the SQL code to process the raw data in ``songs`` and stores it as ``songs_prepared`` in databricks.
+ * Create a Spark Session using PySpark.SQL
+ * Query the `delta_table_iris` table created in the above step (#2)
+ * Using the *GROUP BY* command in SQL to transform the data and make it readable
+ * Writing this data into a new delta table `iris_transformed` for future steps (visualization)
+ * Error handling at every step
+![Usage of Spark SQL](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/blob/ac0b5d7704c4c6a488b37883534836f9fd4630c2/Resources/1116_Spark_SQL_for_DataTransformations%20-%20Databricks.png)
 
-4. ``Analyze``: This notebook has some sample queries to view data from the ``songs_prepared`` dataset.
 
-## Workflows
-There are 2 workflows which happen in this project, the Data worflow which happens in Databricks and the CICD worflow which happens in Gtihub.
+## 4 - Proper error handling and data validation
+Error handling and Data Validation is performed individually in every code and notebook. Errors are published wherever possible, and empty dataframes are flagged as well.
 
-### Data Worflow
-A simple workflow ``Data_Workflow`` has been setup in Databricks which performs the following 3 actions using the corresponding notebooks as mentioned above:
-1. Ingestion
-2. Preparation
-3. Analyze
+## 5 - Visualization of the transformed data
 
-Sucessful execution of Databricsk Workflow:
-![Data Workflow](https://github.com/nogibjj/Week_11_miniproj_Ayush/blob/main/Images/Databricks_Runs.png)
-![Data Workflow](https://github.com/nogibjj/Week_11_miniproj_Ayush/blob/main/Images/Databricks_tasks.png)
+File Name - `04_Visualization_of_Transformed_Data.py` - an Azure Databricks Notebook that creates a Visualization based on the *transformed* delta table created in Step 03
 
-**Note**: The workflow is set to be manually triggered to save costs.
+ * Query the `iris_transformed` Delta Table usign Spark SQL
+ * Generate a chart of the data using Matplotlib
+ * Save the chart as `avg_sepal_length_by_species.png` in the Azure workspace
+ * Location: `/dbfs/tmp/avg_sepal_length_by_species.png`
+ * The image cannot be pushed into the Github Repository directly from a Databricks notebook, because it requires git commands and authentication information
+![Visualization](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/blob/ac0b5d7704c4c6a488b37883534836f9fd4630c2/Resources/1116_Visualization_of_Transformed_Data%20-%20Databricks.png)
 
-### CICD Workflow
-github actions are used to automate the following processes whenever a change is made to the files in the repository:
-   - ``install`` : installs the packages and libraries mentioned in the requirements.txt
-   - ``test`` : uses ``pytest`` to test the python script
-      
-      **Note:** Currently there is no test setup since the files and workflow runs in Databricks.
-     
-   - ``format`` : uses ``black`` to format the python files
-   - ``lint`` : uses ``ruff`` to lint the python files
+## 6 - An automated trigger to initiate the pipeline
 
-**Note** -if all the processes run successfully the following output will be visible in github actions:
-   ![Success Build](resources/build.png)
+The pipeline has been set up to run automatically on the 1st day of every month at 00:00:00.
 
-   
-## Contents
-The Github Repository Contains the following items:
+#### Workflow Pipeline : The workflow first creates the table, then Transforms and Loads the Data, and then creates a Visualization for it using codes from steps 2, 3, and 5 from above 
+![Workflow Chart](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/blob/e1d428241365f7c7e46e128508187be075389625/Resources/1116_Automated%20Workflow_Chart%20-%20Databricks.png)
 
-### 1. README.md
-   contains the information about the repository and instructions for using it
-   
-### 2. requirements.txt
-   contains the list of packages and libraries which are required for running the project. These are intalled and used in the virtual environment and Github actions.
-   
-### 3. .github/workflows
-  Contains the ``cicd.yml`` file which has the steps and instructions for the Github CICD workflow (using Github Actions)
- 
-### 4. Makefile
-   contains the instructions and sequences for the processes used in github actions and .devcontainer for creating the virtual environment
-   
-### 5. .devcontainer
-   contains the ``dockerfile`` and ``devcontainer.json`` files which are used to build and define the setting of the virtual environment (codespaces - python) for running the codes.
+#### Workflow Successful Run
+![Workflow Run](https://github.com/nogibjj/DukeIDS706_ds655_IndividualProject03/blob/e1d428241365f7c7e46e128508187be075389625/Resources/1116_Automated%20Workflow%20-%20Databricks.png)
 
-### 6. Notebooks
-   The 4 notebooks which are mentioned earlier are stored in the ``Notebooks`` folder in this Github repository so as to have version control and CICD
+## 7 - Video Demo - [Link]()
 
-### 7. resources 
-   contains additonal files which are used in the README
 
+
+
+
+
+
+
+
+#
+## File Index
+
+Files in this repository include:
+
+
+## 1. Readme
+  The `README.md` file is a markdown file that contains basic information about the repository, what files it contains, and how to consume them
+
+
+## 2. Requirements
+  The `requirements.txt` file has a list of packages to be installed for any required project. Currently, my requirements file contains some basic python packages.
+
+
+## 3. Codes
+  This folder contains all the code files used in this repository - the files named "Test_" will be used for testing and the remaining will define certain functions
+
+
+## 4. Resources
+  -  This folder contains any other files relevant to this project. Currently, I have added -
+
+
+## 5. CI/CD Automation Files
+
+
+  ### 5(a). Makefile
+  The `Makefile` contains instructions for installing packages (specified in `requirements.txt`), formatting the code (using black formatting), testing the code (running all the sample python code files starting with the term *'Check...'* ), and linting the code using pylint
+
+
+  ### 5(b). Github Actions
+  Github Actions uses the `main.yml` file to call the functions defined in the Makefile based on triggers such as push or pull. Currently, every time a change is pushed onto the repository, it runs the install packages, formatting the code, linting the code, and then testing the code functions
+
+
+  ### 5(c). Devcontainer
+  
+  The `.devcontainer` folder mainly contains two files - 
+  * `Dockerfile` defines the environment variables - essentially it ensures that all collaborators using the repository are working on the same environment to avoid conflicts and version mismatch issues
+  * `devcontainer.json` is a json file that specifies the environment variables including the installed extensions in the virtual environment
