@@ -142,4 +142,4 @@ Files in this repository include:
   * `Dockerfile` defines the environment variables - essentially it ensures that all collaborators using the repository are working on the same environment to avoid conflicts and version mismatch issues
   * `devcontainer.json` is a json file that specifies the environment variables including the installed extensions in the virtual environment
 
-- Video Demo - [https://www.youtube.com/watch?v=ZXVcCGPI3Us]()
+Video Demo - [https://www.youtube.com/watch?v=ZXVcCGPI3Us]()
