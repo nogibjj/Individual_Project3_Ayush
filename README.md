@@ -103,16 +103,6 @@ The pipeline has been set up to run automatically each day at 04:10:00.
 #### Workflow Successful Run
 ![Workflow Run](https://github.com/nogibjj/Individual_Project3_Ayush/blob/main/Images/Workflow.png)
 
-### 7 - Video Demo - [Link]()
-
-
-
-
-
-
-
-
-
 #
 ## File Index
 
@@ -151,3 +141,5 @@ Files in this repository include:
   The `.devcontainer` folder mainly contains two files - 
   * `Dockerfile` defines the environment variables - essentially it ensures that all collaborators using the repository are working on the same environment to avoid conflicts and version mismatch issues
   * `devcontainer.json` is a json file that specifies the environment variables including the installed extensions in the virtual environment
+
+- Video Demo - [https://www.youtube.com/watch?v=ZXVcCGPI3Us]()
